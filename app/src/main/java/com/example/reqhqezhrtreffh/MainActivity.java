@@ -108,25 +108,9 @@ public class MainActivity extends AppCompatActivity {
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                     builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            mWebView = new WebView(MainActivity.this);
-                            mWebView.loadUrl(link.get(position));
-                            mWebView.setWebViewClient(new WebViewClient() {
-                                @Override
-                                public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                                    view.loadUrl(url);
-                                    return true;
-                                }
-                            });
-                            MainActivity.this.setContentView(mWebView);
-                            mWebView.setWebViewClient(new WebViewClient(){
-                                @Override
-                                public void onPageFinished(WebView view, String url) {
-                                    if(url.equals("url after sucessfull login")){
-                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                        startActivity(intent);
-                                    }
-                                }
-                            });
+                            Intent myIntent = new Intent(MainActivity.this, WebClient.class);
+                            myIntent.putExtra("url",link.get(position));
+                            MainActivity.this.startActivity(myIntent);
                         }
                     }).setNegativeButton("non", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
