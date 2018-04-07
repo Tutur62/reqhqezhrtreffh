@@ -59,10 +59,10 @@ public class MainActivity extends AppCompatActivity {
             try {
                 URL url = new URL(params[0]);
                 RssFeed feed = RssReader.read(url);
-                Log.i("RSS Reader", "********** doInBackground: Feed loaded properly. OK! **********");
+                Log.i("RSS Reader", "fonctionne");
                 return feed.getRssItems();
             } catch (Exception ex) {
-                Log.i("RSS Reader", "********** doInBackground: Feed error! **********");
+                Log.i("RSS Reader", "fonctionne pas");
                 return null;
             }
         }
